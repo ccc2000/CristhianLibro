@@ -47,7 +47,7 @@ h1 {
 .page img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   margin: 0;
   padding: 0;
@@ -91,5 +91,32 @@ button:hover {
   button {
     font-size: 0.9rem;
     padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  #flipbook-container {
+    aspect-ratio: 3 / 4;
+  }
+
+  button {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
+}
+
+@media (orientation: portrait) {
+  #flipbook-container {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+@media (orientation: landscape) {
+  #flipbook-container {
+    aspect-ratio: 16 / 10;
   }
 }
