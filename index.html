@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flipbook Interactivo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="libs/turn.min.js"></script>
+</head>
+<body>
+
+  <h1>📘 Pensamientos de Cristhian</h1>
+
+  <div id="flipbook-container">
+    <div id="flipbook"></div>
+
+    <div class="toolbar">
+      <button id="prevPage" title="Página anterior">⏪</button>
+      <span id="pageIndicator">1 / 13</span> <!-- ✅ Actualizado -->
+      <button id="nextPage" title="Página siguiente">⏩</button>
+      <button id="zoomToggle" title="Zoom">🔍</button>
+      <button id="fullscreenToggle" title="Pantalla completa">🖥️</button>
+    </div>
+  </div>
+
+  <audio id="bgMusic" autoplay></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
