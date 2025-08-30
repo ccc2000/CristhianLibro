@@ -14,11 +14,14 @@ body {
 h1 {
   margin-top: 20px;
   text-shadow: 1px 1px 4px #000;
+  font-size: 2rem;
 }
 
 #flipbook-container {
-  width: 800px;
-  height: 500px;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  aspect-ratio: 16 / 10;
   margin: 20px auto;
   position: relative;
   transition: transform 0.3s ease;
@@ -53,11 +56,40 @@ h1 {
 
 .toolbar {
   margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
 }
 
 button {
-  font-size: 18px;
-  margin: 0 5px;
+  font-size: 1rem;
   padding: 8px 12px;
   cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* 📱 Responsive ajustes para móviles */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #flipbook-container {
+    aspect-ratio: 4 / 3;
+    height: auto;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
 }
