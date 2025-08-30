@@ -2,7 +2,6 @@ $(document).ready(function () {
   const totalPages = 13;
   const totalTracks = 11;
 
-  // Cargar las páginas
   for (let i = 1; i <= totalPages; i++) {
     const imgSrc = `assets/${i}.jpg`;
     const img = $("<div />", { class: "page" }).append(
@@ -23,23 +22,29 @@ $(document).ready(function () {
     $("#flipbook").append(img);
   }
 
-  // Inicializar flipbook
   $("#flipbook").turn({
     width: 800,
     height: 500,
     autoCenter: true
   });
 
-  // Navegación
+  function ajustarFlipbook() {
+    const ancho = Math.min(window.innerWidth * 0.95, 800);
+    const alto = ancho * 0.625;
+    $("#flipbook").turn("size", ancho, alto);
+    $("#flipbook-container").css({ width: `${ancho}px`, height: `${alto}px` });
+  }
+
+  ajustarFlipbook();
+  $(window).on("resize", ajustarFlipbook);
+
   $("#prevPage").click(() => $("#flipbook").turn("previous"));
   $("#nextPage").click(() => $("#flipbook").turn("next"));
 
-  // Zoom (aplicado al contenedor)
   $("#zoomToggle").click(() => {
     $("#flipbook-container").toggleClass("zoomed");
   });
 
-  // Pantalla completa
   $("#fullscreenToggle").click(() => {
     const elem = document.documentElement;
     if (elem.requestFullscreen) {
@@ -47,7 +52,6 @@ $(document).ready(function () {
     }
   });
 
-  // Ajustar tamaño en pantalla completa
   document.addEventListener("fullscreenchange", () => {
     const container = $("#flipbook-container");
     const flipbook = $("#flipbook");
@@ -55,12 +59,10 @@ $(document).ready(function () {
       container.css({ width: "100vw", height: "100vh" });
       flipbook.turn("size", window.innerWidth, window.innerHeight);
     } else {
-      container.css({ width: "800px", height: "500px" });
-      flipbook.turn("size", 800, 500);
+      ajustarFlipbook();
     }
   });
 
-  // 🎵 Música sincronizada
   const audio = document.getElementById("bgMusic");
 
   $(document).one("click", () => {
